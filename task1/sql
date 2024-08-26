@@ -1,0 +1,9 @@
+
+#### 8. Commit and Push Your Changes to GitHub
+
+Finally, make sure you commit your changes and push them to your GitHub repository:
+
+```bash
+git add Dockerfile api.py README.md
+git commit -m "Add Dockerfile, api.py, and README for task1"
+git push origin main
