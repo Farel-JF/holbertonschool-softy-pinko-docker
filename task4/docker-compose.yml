@@ -1,0 +1,24 @@
+version: '3.8'  # Specify the Compose file version
+
+services:
+  # Backend Service
+  back-end:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend  # Assumes there's a Dockerfile.backend in the directory
+    image: softy-pinko-back-end:task4
+    container_name: task4-back-end
+    ports:
+      - "5252:5252"  # Map port 5252 on the host to port 5252 in the container
+    depends_on:
+      - front-end
+
+  # Frontend Service
+  front-end:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend  # Assumes there's a Dockerfile.frontend in the directory
+    image: softy-pinko-front-end:task4
+    container_name: task4-front-end
+    ports:
+      - "80:80"  # Map port 80 on the host to port 80 in the container

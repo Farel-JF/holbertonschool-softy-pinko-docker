@@ -1,0 +1,9 @@
+
+#### 11. Commit and Push Changes to GitHub
+
+Finally, commit your changes and push them to your GitHub repository:
+
+```bash
+git add .
+git commit -m "Add front-end Docker setup with Nginx and reorganize project structure"
+git push origin main
