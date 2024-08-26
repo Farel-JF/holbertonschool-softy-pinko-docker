@@ -1,0 +1,55 @@
+services:
+  back-end:
+    image: your-api-image
+    ports:
+      - "5252:5252"
+
+version: '3'
+services:
+  back-end:
+    image: your-api-image
+    ports:
+      - "5252"
+    deploy:
+      replicas: 2
+
+version: '3'
+services:
+  back-end-1:
+    image: your-api-image
+    ports:
+      - "5252"
+  back-end-2:
+    image: your-api-image
+    ports:
+      - "5253"
+
+version: '3'
+services:
+  front-end:
+    image: your-frontend-image
+    ports:
+      - "80:80"
+    depends_on:
+      - back-end-1
+      - back-end-2
+
+  back-end-1:
+    image: your-api-image
+    ports:
+      - "5252"
+
+  back-end-2:
+    image: your-api-image
+    ports:
+      - "5253"
+
+  proxy:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - back-end-1
+      - back-end-2
